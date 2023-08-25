@@ -40,7 +40,8 @@ const HomePage = () => {
             const getShows = async () => {
             const response = await fetch('http://localhost:3000/api/shows')
             const data = await response.json()
-            setShows(data)
+            const firstTwo = [data[1], data[2]]
+            setShows(firstTwo)
             }
             getShows()
         }, []);
@@ -80,7 +81,7 @@ const HomePage = () => {
           {/* End hero unit */}
           <Grid container spacing={4}>
             {shows.map((shows) => (
-              <Grid item key={shows} xs={12} sm={6} md={4}>
+              <Grid item key={shows} xs={12} sm={8} md={8}>
                 <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
@@ -99,7 +100,6 @@ const HomePage = () => {
                     </Typography>
                     <Typography>
                     {shows.details}
-                      {/* We will use `${card.content} */}
                     </Typography>
                   </CardContent>
                   <CardActions>
