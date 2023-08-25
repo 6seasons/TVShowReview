@@ -80,16 +80,18 @@ export default function HomePage() {
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      Heading 
+                      {/* We will use `${card.name} */}
                     </Typography>
                     <Typography>
                       This is a media card. You can use this section to describe the
                       content.
+                      {/* We will use `${card.content} */}
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
+                    <Button size="small">Review</Button>
+                    <Button size="small">Admin Edit</Button>
                   </CardActions>
                 </Card>
               </Grid>
