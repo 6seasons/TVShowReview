@@ -156,6 +156,15 @@ const seed = async () => {
   console.log(`USERS AND REVIEWS CREATED`);
   console.log(`CREATING COMMENTS`);
 
+  await prisma.comment.create({
+    data: {
+      content: `dude are you crazy this sucks`,
+      user_id: 1,
+      review_id: 6,
+    }
+  })
+
+
 };
 
 seed();
