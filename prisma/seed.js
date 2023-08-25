@@ -116,6 +116,7 @@ const seed = async () => {
            },
            { show_id: 3,
             rating: 6,
+            content: `this was alright`
            }
         ]
       }
@@ -147,6 +148,7 @@ const seed = async () => {
            },
            { show_id: 2,
             rating: 6,
+            content: `dunno if this was supposed to be good`
            }
         ]
       }
@@ -156,12 +158,44 @@ const seed = async () => {
   console.log(`USERS AND REVIEWS CREATED`);
   console.log(`CREATING COMMENTS`);
 
-  await prisma.comment.create({
-    data: {
+  await prisma.comment.createMany({
+    data: [
+      {
       content: `dude are you crazy this sucks`,
       user_id: 1,
       review_id: 6,
+    },
+    {
+      content: `I agree`,
+      user_id: 3,
+      review_id: 6,
+    },
+    {
+      content: `BAD TAKE`,
+      user_id: 1,
+      review_id: 8,
+    },
+    {
+      content: `dude are you crazy this sucks`,
+      user_id: 1,
+      review_id: 11,
+    },
+    {
+      content: `I agree`,
+      user_id: 1,
+      review_id: 12,
+    },
+    {
+      content: `idk`,
+      user_id: 3,
+      review_id: 1,
+    },
+    {
+      content: `great point`,
+      user_id: 2,
+      review_id: 1,
     }
+  ]
   })
 
 
