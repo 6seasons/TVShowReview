@@ -11,6 +11,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState, useEffect } from "react";
+
 
 const Copyright = () => {
   return (
@@ -25,12 +27,25 @@ const Copyright = () => {
   );
 }
 
-const cards = [1, "ab",];
+// const cards = [1, "ab",];
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function HomePage() {
+const HomePage = () => {
+    const [shows, setShows] = useState([]);
+    const ShowData = () => {
+      
+        useEffect(() => {
+            const getShows = async () => {
+            const response = await fetch('http://localhost:3000/api/shows')
+            const data = await response.json()
+            setShows(data)
+            }
+            getShows()
+        }, []);
+      }
+    ShowData();
   return (
     <>
     <ThemeProvider theme={defaultTheme}>
@@ -61,12 +76,11 @@ export default function HomePage() {
           </Container>
           </Box>
 
-
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+            {shows.map((shows) => (
+              <Grid item key={shows} xs={12} sm={6} md={4}>
                 <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
@@ -80,12 +94,11 @@ export default function HomePage() {
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading 
+                      {shows.name}
                       {/* We will use `${card.name} */}
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the
-                      content.
+                    {shows.details}
                       {/* We will use `${card.content} */}
                     </Typography>
                   </CardContent>
@@ -122,3 +135,5 @@ export default function HomePage() {
     </>
   );
 }
+
+export default HomePage;
