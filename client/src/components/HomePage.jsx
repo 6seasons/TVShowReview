@@ -91,7 +91,8 @@ export default function HomePage() {
                   </CardContent>
                   <CardActions>
                     <Button size="small">Review</Button>
-                    <Button size="small">Admin Edit button</Button>
+                    <Button size="small">Admin Edit</Button>
+
                   </CardActions>
                 </Card>
               </Grid>
