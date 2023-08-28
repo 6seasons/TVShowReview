@@ -105,11 +105,11 @@ const HomePage = () => {
                     {shows.details}
                     </Typography>
                   </CardContent>
+                  </Link>{' '}
                   <CardActions>
                     <Button size="small">Review</Button>
                     <Button size="small">Admin Edit</Button>
                   </CardActions>
-                  </Link>{' '}
                 </Card>
               </Grid>
             ))}
