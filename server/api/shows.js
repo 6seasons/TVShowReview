@@ -15,14 +15,22 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const allShows = await prisma.show.findUnique({
-      where: {
-        id: Number(req.params.id),
-      },
+    const show = await prisma.show.findUnique({
+      where: { id: Number(req.params.id) },
     });
-    res.send(allShows);
+    const reviews = await prisma.review.findMany({
+      where: { show_id: Number(req.params.id) },
+      include: {
+        user: {
+          select: {
+            username: true
+        }
+      }
+    }
+    })
+    res.send({ show: show, reviews: reviews });
   } catch (err) {
-    next(err);
+    console.log(err);
   }
 });
 
