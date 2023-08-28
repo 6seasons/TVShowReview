@@ -34,11 +34,13 @@ const ShowDetails = () => {
       }
       {reviews.map(review => {
         return (
+          <>
           <section>
             <h3>{review.user.username}</h3>
             <h1>{review.rating}</h1>
             <p>{review.content? review.content : null}</p>
           </section>
+          </>
         )
       })}
     </>

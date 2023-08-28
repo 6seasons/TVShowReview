@@ -88,6 +88,7 @@ const HomePage = () => {
                 <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column', align: 'center'}}
                 >
+                   <Link color="inherit" href={`http://localhost:3000/api/shows/${shows.id}`}>
                   <CardMedia
                     component="div"
                     sx={{
@@ -108,6 +109,7 @@ const HomePage = () => {
                     <Button size="small">Review</Button>
                     <Button size="small">Admin Edit</Button>
                   </CardActions>
+                  </Link>{' '}
                 </Card>
               </Grid>
             ))}
