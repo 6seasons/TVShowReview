@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom'
+import '../App.css'
 
 const Navbar = () => {
   return (
     <>
       <section>
-        <Link to='/'>Home</Link>
-        <Link to='/test'>Show List</Link>
-        <Link to='/showdetails'>Single Show Expanded View</Link>
-      </section>
-      <section>
-        <Link to='/logintest'>Log In</Link>
+        <Link className='Nav' to='/'>Home</Link>
+        <Link className='Nav' to='/test'>Show List</Link>
+        <Link className='Nav' to='/showdetails'>Single Show Expanded View</Link>
+        <Link className='Nav' to='/logintest'>Log In</Link>
+        <Link className='Nav' to='/Admin'>Admin</Link>
       </section>
     </>
   )
