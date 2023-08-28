@@ -14,6 +14,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState, useEffect } from "react";
 
 
+
 const Copyright = () => {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
@@ -78,11 +79,14 @@ const HomePage = () => {
 
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
-          <Grid container spacing={4}>
+          <Grid container spacing={8}>
             {shows.map((shows) => (
-              <Grid item key={shows} xs={12} sm={8} md={8}>
+              <Grid item key={shows.name} xs={12} sm={12} md={12}>
+                <Typography variant="h5" align="center" color="text.secondary" paragraph>
+                Title
+                </Typography>
                 <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                  sx={{ height: '100%', display: 'flex', flexDirection: 'column', align: 'center'}}
                 >
                   <CardMedia
                     component="div"
@@ -95,7 +99,6 @@ const HomePage = () => {
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
                       {shows.name}
-                      {/* We will use `${card.name} */}
                     </Typography>
                     <Typography>
                     {shows.details}
