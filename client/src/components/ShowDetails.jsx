@@ -2,16 +2,14 @@ import { useState, useEffect } from "react";
 
 const ShowDetails = () => {
 
-  const [show, setShow] = useState({});
+  const [show, setShow] = useState(null);
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     const fetchShow = async () => {
       try {
-        const response = await fetch('/api/shows/5');
+        const response = await fetch('/api/shows/1');
         const data = await response.json();
-        console.log(data.show);
-        console.log(data.reviews);
         setShow(data.show);
         setReviews(data.reviews);
       } catch (err) {
@@ -21,9 +19,28 @@ const ShowDetails = () => {
     fetchShow();
   }, [])
 
+  console.log(show);
+  console.log(reviews);
+  
   return (
     <>
-      <h1>hello</h1>
+      {show ?
+      <section>
+        <h1>{show.name}</h1>
+        {/* <img src={show.imageUrl} /> */}
+        <p>{show.details}</p>
+      </section> :
+      null
+      }
+      {reviews.map(review => {
+        return (
+          <section>
+            <h3>{review.user.username}</h3>
+            <h1>{review.rating}</h1>
+            <p>{review.content? review.content : null}</p>
+          </section>
+        )
+      })}
     </>
   );
 };

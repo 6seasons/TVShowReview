@@ -20,10 +20,17 @@ router.get("/:id", async (req, res) => {
     });
     const reviews = await prisma.review.findMany({
       where: { show_id: Number(req.params.id) },
+      include: {
+        user: {
+          select: {
+            username: true
+        }
+      }
+    }
     })
     res.send({ show: show, reviews: reviews });
   } catch (err) {
-    next(err);
+    console.log(err);
   }
 });
 
