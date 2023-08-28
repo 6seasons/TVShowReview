@@ -27,8 +27,6 @@ const Copyright = () => {
   );
 }
 
-// const cards = [1, "ab",];
-
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
@@ -47,6 +45,7 @@ const HomePage = () => {
         }, []);
       }
     ShowData();
+
   return (
     <>
     <ThemeProvider theme={defaultTheme}>
@@ -105,7 +104,6 @@ const HomePage = () => {
                   <CardActions>
                     <Button size="small">Review</Button>
                     <Button size="small">Admin Edit</Button>
-
                   </CardActions>
                 </Card>
               </Grid>
@@ -113,7 +111,6 @@ const HomePage = () => {
           </Grid>
         </Container>
       </main>
-
 
       {/* Footer */}
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
