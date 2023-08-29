@@ -4,6 +4,7 @@ import HomePage from "./components/HomePage";
 import Navbar from "./components/Navbar";
 import ShowDetails from "./components/ShowDetails";
 import Admin from "./components/AdminPage";
+import ProfilePage from "./components/ProfilePage";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/Admin" element={<Admin />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/Profile" element={<ProfilePage />}></Route>
       </Routes>
     </>
   );
