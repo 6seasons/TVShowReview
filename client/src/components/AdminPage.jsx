@@ -9,8 +9,8 @@ const Admin = () => {
             <label>Iamge: <input></input></label>
             <br/>
             <label>Details: <input></input></label>
+            <br/>
         </form>
-        
         </>
     )
 }

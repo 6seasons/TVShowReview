@@ -14,8 +14,6 @@ import { Link } from 'react-router-dom'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState, useEffect } from "react";
 
-
-
 const Copyright = () => {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
