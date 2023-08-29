@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const ShowDetails = () => {
 
+  const { showID } = useParams();
+  
   const [show, setShow] = useState(null);
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     const fetchShow = async () => {
       try {
-        const response = await fetch('/api/shows/1');
+        const response = await fetch(`/api/shows/${showID}`);
         const data = await response.json();
         setShow(data.show);
         setReviews(data.reviews);
@@ -18,7 +21,7 @@ const ShowDetails = () => {
     }
     fetchShow();
   }, [])
-
+  
   console.log(show);
   console.log(reviews);
   
