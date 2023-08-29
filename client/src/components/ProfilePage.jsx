@@ -35,7 +35,8 @@ const ProfilePage = () => {
             {reviews.map((review) => {
               return (
                 <section>
-                  <h2>{review.rating}</h2>
+                  <h2>{review.show.name}</h2>
+                  <h3>{review.rating}</h3>
                   <p>{review.content}</p>
                 </section>
               );
