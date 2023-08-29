@@ -9,7 +9,15 @@ router.get("/me", checkAuth, async (req, res) => {
   const user = await prisma.user.findUnique({
     where: { id: req.userID },
     include: {
-      reviews: true,
+      reviews: {
+        include: {
+          show: {
+            select: {
+              name: true
+            }
+          }
+        }
+      },
       comments: true
     }
   })
