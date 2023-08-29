@@ -19,7 +19,7 @@ const Copyright = () => {
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://github.com/6seasons/TVShowReview">
-        Your Website
+        TV SHOW REVIEW 
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
