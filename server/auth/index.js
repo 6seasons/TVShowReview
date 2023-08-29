@@ -7,56 +7,55 @@ require("dotenv").config();
 const prisma = new PrismaClient();
 const router = express.Router();
 
-router.post("/register", async (req, res) => {
+router.post('/register', async (req, res) => {
+  const { username, password } = req.body;
+
+  // Hash the password
+  const hashedPassword = await bcrypt.hash(password, 10);
+
   try {
-    const { username, password } = req.body;
-
-    // Check if user already exists
-    const userExists = await prisma.user.findUnique({ where: { username } });
-    if (userExists) {
-      return res.status(400).json({ error: 'Username already exists.' });
-    }
-
-    // Hash the password before saving it
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Save the user to the database
-    const newUser = await prisma.user.create({
-        data: {
-            username,
-            password: hashedPassword
-        }
+    // Store the user in the database
+    const user = await prisma.user.create({
+      data: {
+        username,
+        password: hashedPassword,
+      },
     });
 
-    res.status(201).json({ message: 'User registered successfully', userId: newUser.id });
-
+    res.status(201).send(user);
   } catch (error) {
-    res.status(500).json({ error: 'Something went wrong. Please try again.' });
+    console.error(error);
+    res.status(500).send('Internal server error');
   }
 });
 
 router.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+
   try {
-    const { username, password } = req.body;
+    // Find the user in the database
+    const user = await prisma.user.findUnique({
+      where: { username },
+    });
 
-    // Check if user exists
-    const user = await prisma.user.findUnique({ where: { username } });
     if (!user) {
-      return res.status(404).json({ error: 'Username not found.' });
+      return res.status(404).send('User not found');
     }
 
-    // Compare entered password with stored hashed password
-    const validPassword = await bcrypt.compare(password, user.password);
-    if (!validPassword) {
-      return res.status(400).json({ error: 'Invalid password.' });
+    // Compare the provided password with the hashed password in the database
+    const passwordIsValid = await bcrypt.compare(password, user.password);
+
+    if (!passwordIsValid) {
+      return res.status(401).send('Invalid password');
     }
 
-    // If valid, generate a JWT
-    const token = jwt.sign({ id: user.id }, process.env.JWT);
-    res.send(token);
+    // Generate a JWT token
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
+    res.send({ token });
   } catch (error) {
-    res.status(500).json({ error: 'Something went wrong. Please try again.' });
+    console.error(error);
+    res.status(500).send('Internal server error');
   }
 });
 
