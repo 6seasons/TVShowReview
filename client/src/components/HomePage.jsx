@@ -9,7 +9,8 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
+import { Link } from 'react-router-dom'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState, useEffect } from "react";
 
@@ -88,7 +89,7 @@ const HomePage = () => {
                 <Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column', align: 'center'}}
                 >
-                   <Link color="inherit" href={`http://localhost:3000/api/shows/${shows.id}`}>
+                   <Link color="inherit" to={`/showdetails/${shows.id}`}>
                   <CardMedia
                     component="div"
                     sx={{
