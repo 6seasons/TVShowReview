@@ -34,4 +34,14 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.post("/", async (req, res) => {
+  try{
+    const show = await prisma.show.create({
+      data: {
+        name: 'Elsa Prisma',
+      },
+    })
+  }
+})
+
 module.exports = router;
