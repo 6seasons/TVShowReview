@@ -36,7 +36,7 @@ const HomePage = () => {
       
         useEffect(() => {
             const getShows = async () => {
-            const response = await fetch('http://localhost:3000/api/shows')
+            const response = await fetch('/api/shows')
             const data = await response.json()
             const firstTwo = [data[1], data[2]]
             setShows(firstTwo)

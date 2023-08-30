@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 
     const Admin = () => {
         const [shows, setShows] = useState([]);
+        const [users, setUsers] = useState([]);
         const ShowData = () => {
             useEffect(() => {
                 const getShows = async () => {
@@ -15,7 +16,6 @@ import {Link} from 'react-router-dom'
           }
         ShowData();
 
-        const [users, setUsers] = useState([]);
         const UserData = () => {
             useEffect(() => {
                 const getUsers = async () => {
@@ -78,7 +78,8 @@ import {Link} from 'react-router-dom'
             <ul>
                 {users.map(user => (
                 <li key={user.id}>
-                <Link to={`/showdetails/${user.id}`}>{user.name}</Link>{' '}
+                    {user.name}
+                {/* <Link to={`/showdetails/${user.id}`}>{user.name}</Link>{' '} */}
                 </li>
             ))}
              </ul>
