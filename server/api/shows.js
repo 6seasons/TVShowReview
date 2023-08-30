@@ -1,5 +1,6 @@
 const express = require("express");
 const { PrismaClient } = require("@prisma/client");
+const {checkAuth} = require('../api/utils')
 
 const prisma = new PrismaClient();
 const router = express.Router();
@@ -34,14 +35,16 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
-  try{
-    const show = await prisma.show.create({
-      data: {
-        name: 'Elsa Prisma',
-      },
-    })
-  }
+router.post(`/post`, async (req, res) => {
+  const { name, imageUrl, details } = req.body
+  const result = await prisma.show.create({
+    data: {
+      name,
+      imageUrl,
+      details,
+    },
+  })
+  res.json(result)
 })
 
 module.exports = router;
