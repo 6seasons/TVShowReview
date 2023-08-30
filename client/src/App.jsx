@@ -7,6 +7,7 @@ import Admin from "./components/AdminPage";
 import ProfilePage from "./components/ProfilePage";
 import Searchbar from "./components/Searchbar";
 
+
 const App = () => {
   return (
     <>
