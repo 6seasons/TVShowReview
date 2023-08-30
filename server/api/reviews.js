@@ -16,7 +16,8 @@ router.get("/:id", async (req, res) => {
     include: {
       show: {
         select: {
-          name: true
+          name: true,
+          imageUrl: true
         }
       },
       user: {
