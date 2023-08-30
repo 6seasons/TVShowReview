@@ -6,6 +6,7 @@ import ShowDetails from "./components/ShowDetails";
 import Admin from "./components/AdminPage";
 import ProfilePage from "./components/ProfilePage";
 import Searchbar from "./components/Searchbar";
+import ReviewPage from "./components/ReviewPage";
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/Profile" element={<ProfilePage />}></Route>
+        <Route path="/Review/:id" element={<ReviewPage />}></Route>
       </Routes>
     </>
   );

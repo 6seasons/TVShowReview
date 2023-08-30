@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const ShowDetails = () => {
   const { showID } = useParams();
@@ -21,9 +21,6 @@ const ShowDetails = () => {
     fetchShow();
   }, [showID]);
 
-  console.log(show);
-  console.log(reviews);
-
   return (
     <>
       {show ?
@@ -35,12 +32,15 @@ const ShowDetails = () => {
       null
       }
       {reviews.map(review => {
+        const reviewURL = `/Review/${review.id}`;
         return (
           <>
             <section>
-              <h3>{review.user.username}</h3>
-              <h1>{review.rating}</h1>
-              <p>{review.content ? review.content : null}</p>
+              <Link to={reviewURL}>
+                <h3>{review.user.username}</h3>
+                <h1>{review.rating}</h1>
+                <p>{review.content ? review.content : null}</p>
+              </Link>
             </section>
           </>
         );
