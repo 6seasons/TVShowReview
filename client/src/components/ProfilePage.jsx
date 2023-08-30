@@ -7,17 +7,20 @@ const ProfilePage = () => {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const response = await fetch("/api/users/me", {
-        headers: {
-          "Content-Type": "application/json",
-          authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjkzMjUzODQ2fQ.YqPeizl7Q61p9L71n0T47_Gic7ldE4jFkwKhj-x_X3A",
-        },
-      });
-      const data = await response.json();
-      setUser(data);
-      setReviews(data.reviews);
-      setComments(data.comments);
+      try {
+        const response = await fetch("/api/users/me", {
+          headers: {
+            "Content-Type": "application/json",
+            authorization: import.meta.env.VITE_TOKEN,
+          },
+        });
+        const data = await response.json();
+        setUser(data);
+        setReviews(data.reviews);
+        setComments(data.comments);
+      } catch (err) {
+        console.log(err)
+      }
     };
     fetchProfile();
   }, []);
