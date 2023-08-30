@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import {Link} from 'react-router-dom'
 
     const Admin = () => {
         const [shows, setShows] = useState([]);
@@ -14,33 +15,48 @@ import {useEffect, useState} from "react";
           }
         ShowData();
 
-        const [reviews, setReviews] = useState([]);
-        const ReviewData = () => {
+        const [users, setUsers] = useState([]);
+        const UserData = () => {
             useEffect(() => {
-                const getShows = async () => {
-                const response = await fetch('http://localhost:3000/api/reviews')
+                const getUsers = async () => {
+                const response = await fetch('http://localhost:3000/api/users')
                 const data = await response.json()
-                setReviews(data)
+                setUsers(data)
                 }
-                getShows()
+                getUsers()
             }, []);
           }
-          ReviewData();
+          UserData();
 
         const handleSubmit = (e) => {
             e.preventDefault();
-            console.log('yay')
+            
+            const url = '/api/shows/post';
+            const body = {
+            name: e.target[0].value,
+            imageUrl: e.target[1].value,
+            details: e.target[2].value
+            };
+
+            fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(body),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+            })
+            .then(response => response.json())
         }
         
     return (
         <>
         <h2>Create New Show</h2>
         <form onSubmit={handleSubmit}>
-            <label>Name: <input></input></label>
+            <label id="name">Name: <input></input></label>
             <br/>
-            <label>Iamge: <input></input></label>
+            <label id="iamge">Iamge: <input></input></label>
             <br/>
-            <label>Details: <input></input></label>
+            <label id="details">Details: <input></input></label>
             <br/>
             <button type="submit" >Submit</button>
         </form>
@@ -51,18 +67,18 @@ import {useEffect, useState} from "react";
             <ul>
                 {shows.map(show => (
                 <li key={show.id}>
-                <a href={`http://localhost:3000/api/shows/${show.id}`}>{show.name}</a>
+                <Link to={`/showdetails/${show.id}`}>{show.name}</Link>{' '}
                 </li>
             ))}
              </ul>
         </section>
 
         <section>
-            <h1>List of Reviews</h1>
+            <h1>List of Users</h1>
             <ul>
-                {reviews.map(review => (
-                <li key={review.id}>
-                <a href={`http://localhost:3000/api/reviews/${review.id}`}>{review.id}</a>
+                {users.map(user => (
+                <li key={user.id}>
+                <Link to={`/showdetails/${user.id}`}>{user.name}</Link>{' '}
                 </li>
             ))}
              </ul>
