@@ -8,7 +8,10 @@ const router = express.Router();
 router.get("/me", checkAuth, async (req, res) => {
   const user = await prisma.user.findUnique({
     where: { id: req.userID },
-    include: {
+    select: {
+      username: true,
+      email: true,
+      image: true,
       reviews: {
         include: {
           show: {
@@ -20,7 +23,7 @@ router.get("/me", checkAuth, async (req, res) => {
       },
       comments: true
     }
-  })
+    })
   res.send(user);
 });
 
