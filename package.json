@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cd client && npm run build && cd .. && nodemon ./server",
+    "up": "cd client && npm run build",
     "server:dev": "nodemon ./server",
     "seed": "npx prisma migrate reset"
   },
@@ -17,6 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.2.0",
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
