@@ -38,7 +38,7 @@ const HomePage = () => {
             const getShows = async () => {
             const response = await fetch('/api/shows')
             const data = await response.json()
-            const firstTwo = [data[1], data[2]]
+            const firstTwo = [data[Math.floor(Math.random() * data.length + 1)], data[Math.floor(Math.random() * data.length + 1)]]
             setShows(firstTwo)
             }
             getShows()
