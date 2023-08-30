@@ -35,7 +35,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post(`/post`, async (req, res) => {
+router.post(`/create`, async (req, res) => {
   const { name, imageUrl, details } = req.body
   const result = await prisma.show.create({
     data: {
@@ -48,3 +48,11 @@ router.post(`/post`, async (req, res) => {
 })
 
 module.exports = router;
+
+router.delete('/delete', async (req, res) => {
+  const {id} = req.body
+  const result = await prisma.show.delete({
+    where: {id: Number(id)}
+  })
+  res.json(result)
+})
