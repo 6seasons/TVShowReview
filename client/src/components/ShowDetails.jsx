@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const ShowDetails = () => {
-
   const { showID } = useParams();
-  
+
   const [show, setShow] = useState(null);
   const [reviews, setReviews] = useState([]);
 
@@ -16,15 +15,15 @@ const ShowDetails = () => {
         setShow(data.show);
         setReviews(data.reviews);
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
-    }
+    };
     fetchShow();
-  }, [])
-  
+  }, [showID]);
+
   console.log(show);
   console.log(reviews);
-  
+
   return (
     <>
       {show ?
@@ -38,13 +37,13 @@ const ShowDetails = () => {
       {reviews.map(review => {
         return (
           <>
-          <section>
-            <h3>{review.user.username}</h3>
-            <h1>{review.rating}</h1>
-            <p>{review.content? review.content : null}</p>
-          </section>
+            <section>
+              <h3>{review.user.username}</h3>
+              <h1>{review.rating}</h1>
+              <p>{review.content ? review.content : null}</p>
+            </section>
           </>
-        )
+        );
       })}
     </>
   );
