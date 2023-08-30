@@ -6,6 +6,7 @@ import ShowDetails from "./components/ShowDetails";
 import Admin from "./components/AdminPage";
 import ProfilePage from "./components/ProfilePage";
 import Searchbar from "./components/Searchbar";
+import ReviewPage from "./components/ReviewPage";
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/showdetails/:showID" element={<ShowDetails />}></Route>
         <Route path="/Admin" element={<Admin />}></Route>
         <Route path="/Profile" element={<ProfilePage />}></Route>
+        <Route path="/Review/:id" element={<ReviewPage />}></Route>
       </Routes>
     </>
   );
