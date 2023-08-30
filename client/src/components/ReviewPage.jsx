@@ -4,12 +4,12 @@ import { useParams } from "react-router-dom";
 const ReviewPage = () => {
   const [review, setReview] = useState();
 
-  const { id } = useParams();
+  const { reviewID } = useParams();
 
   useEffect(() => {
     const fetchReview = async () => {
       try {
-        const response = await fetch(`/api/reviews/${id}`);
+        const response = await fetch(`/api/reviews/${reviewID}`);
         const data = await response.json();
         setReview(data);
       } catch (err) {
@@ -17,7 +17,7 @@ const ReviewPage = () => {
       }
     };
     fetchReview();
-  }, []);
+  }, [reviewID]);
 
   return (
     <>
