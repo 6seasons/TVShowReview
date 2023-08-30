@@ -19,7 +19,7 @@ const App = () => {
         <Route path="/showdetails/:showID" element={<ShowDetails />}></Route>
         <Route path="/Admin" element={<Admin />}></Route>
         <Route path="/Profile" element={<ProfilePage />}></Route>
-        <Route path="/Review/:id" element={<ReviewPage />}></Route>
+        <Route path="/Review/:reviewID" element={<ReviewPage />}></Route>
       </Routes>
     </>
   );
