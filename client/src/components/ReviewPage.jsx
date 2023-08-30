@@ -21,7 +21,30 @@ const ReviewPage = () => {
 
   return (
     <>
-      <h1>{review ? review.user.username : null}</h1>
+      {!review ? null :
+        <section>
+          <section>
+            <section>
+              <img src={review.show.imageUrl} />
+            </section>
+            <p>{review.user.image}</p>
+            <h2>{review.user.username}</h2>
+            <h3>{review.rating}</h3>
+            <p>{review.content}</p>
+          </section>
+          <section>
+            {review.comments.map(comment => {
+              return (
+                <>
+                  <h3>{comment.user.username}</h3>
+                  <p>{comment.content}</p>
+                </>
+              )
+            })}
+          </section>
+        </section>
+
+      }
     </>
   );
 };
