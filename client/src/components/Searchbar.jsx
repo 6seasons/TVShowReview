@@ -6,7 +6,6 @@ const Searchbar = () => {
   const [input, setInput] = useState("");
 
   useEffect(() => {
-    console.log(`hello`);
     const fetchShows = async () => {
       try {
         const response = await fetch("/api/shows");
