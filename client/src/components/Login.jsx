@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ setToken, setUserID }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+
+    const navigate = useNavigate();
 
     const handleEmailChange = (event) => {
         setEmail(event.target.value);
@@ -28,18 +31,16 @@ const Login = () => {
                 body: JSON.stringify({ username: username, password: password })
             });
             const data = await response.json();
-            console.log(data);
+            setToken(data.token)
             if (!response.ok) {
                 throw new Error(data.message || 'Something went wrong');
             }
-            
-            // Store the token, redirect the user, etc.
-            // ...
         } catch (err) {
             setError(err.message);
         } finally {
             setLoading(false);
         }
+        navigate("/")
     };
 
     return (
