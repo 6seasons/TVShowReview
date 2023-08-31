@@ -59,6 +59,14 @@ app.get("/EditShowPage/:id", (req, res) => {
   }
 });
 
+app.get("/ShowsPage", (req, res) => {
+  try{
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+  } catch(err) {
+    res.status(500).send(err)
+  }
+});
+
 app.use("/api", api);
 app.use("/auth", auth);
 
