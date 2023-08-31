@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 
-const ProfilePage = () => {
+const ProfilePage = ({ token }) => {
   const [user, setUser] = useState(null);
   const [reviews, setReviews] = useState([]);
   const [comments, setComments] = useState([]);
@@ -12,7 +12,7 @@ const ProfilePage = () => {
         const response = await fetch("/api/users/me", {
           headers: {
             "Content-Type": "application/json",
-            authorization: import.meta.env.VITE_TOKEN,
+            authorization: "Bearer " + token,
           },
         });
         const data = await response.json();
