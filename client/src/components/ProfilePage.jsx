@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
@@ -24,7 +25,7 @@ const ProfilePage = () => {
     };
     fetchProfile();
   }, []);
-
+  
   return (
     <>
       {user ? (
@@ -36,22 +37,28 @@ const ProfilePage = () => {
           <section>
             <h3>Reviews</h3>
             {reviews.map((review) => {
+              const reviewURL = `/Review/${review.id}`;
               return (
-                <section>
-                  <h2>{review.show.name}</h2>
-                  <h3>{review.rating}</h3>
-                  <p>{review.content}</p>
-                </section>
+                <Link to={reviewURL}>
+                  <section>
+                    <h2>{review.show.name}</h2>
+                    <h3>{review.rating}</h3>
+                    <p>{review.content}</p>
+                  </section>
+                </Link>
               );
             })}
           </section>
           <section>
             <h3>Comments</h3>
             {comments.map((comment) => {
+              const reviewURL = `/Review/${comment.review_id}`;
               return (
-                <section>
-                  <p>{comment.content}</p>
-                </section>
+                <Link to={reviewURL}>
+                  <section>
+                    <p>{comment.content}</p>
+                  </section>
+                </ Link>
               );
             })}
           </section>
