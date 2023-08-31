@@ -25,10 +25,38 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static(path.join(__dirname, "../client/dist")));
+app.use(express.static(path.join(__dirname, "../client/dist/")));
 
 app.get("/", (req, res) => {
+  try{
   res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+  } catch(err) {
+    res.status(500).send(err)
+  }
+});
+//Shows List
+app.get("/test", (req, res) => {
+  try{
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+  } catch(err) {
+    res.status(500).send(err)
+  }
+});
+//Admin PAge
+app.get("/Admin", (req, res) => {
+  try{
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+  } catch(err) {
+    res.status(500).send(err)
+  }
+});
+
+app.get("/EditShowPage/:id", (req, res) => {
+  try{
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+  } catch(err) {
+    res.status(500).send(err)
+  }
 });
 
 app.use("/api", api);

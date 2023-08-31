@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+
 const Admin = () => {
   const [shows, setShows] = useState([]);
   const [users, setUsers] = useState([]);
@@ -49,19 +50,26 @@ const Admin = () => {
         "Content-Type": "application/json",
       },
     }).then((response) => response.json());
+    window.location.reload();
   };
 
 
   //Edit Show
   const handleEditClick = (e) => {
     e.preventDefault();
-    console.log(e.target.id);
+
+    const edit = async () => {
+    const findShowId = await Number(e.target.id)
+    const foundShow = shows.find(x => x.id === findShowId)
+    window.location.href = `/EditShowPage/${foundShow.id}`;
+    }
+    edit();
   };
 
 
   //Delete Show
   const handleDeleteClick = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     console.log(e.target.id);
 
     const urlDelete = "/api/shows/delete";
@@ -75,6 +83,7 @@ const Admin = () => {
         "Content-Type": "application/json",
       },
     }).then((response) => response.json());
+    window.location.reload();
   };
 
 
@@ -115,7 +124,7 @@ const Admin = () => {
         <h1>List of Users</h1>
         <ul>
           {users.map((user) => (
-            <li key={user.id}>{user.username}</li>
+            <li key={user.id}>{user.username} - {user.isAdmin ? "Admin User" : "User"} - {user.email}</li>
           ))}
         </ul>
       </section>
