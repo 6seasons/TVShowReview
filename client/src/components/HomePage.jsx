@@ -32,19 +32,24 @@ const defaultTheme = createTheme();
 
 const HomePage = () => {
     const [shows, setShows] = useState([]);
-    const ShowData = () => {
       
-        useEffect(() => {
-            const getShows = async () => {
-            const response = await fetch('/api/shows')
-            const data = await response.json()
-            const firstTwo = [data[Math.floor(Math.random() * data.length + 1)], data[Math.floor(Math.random() * data.length + 1)]]
-            setShows(firstTwo)
-            }
-            getShows()
-        }, []);
+     useEffect(() => {
+      const getShows = async () => {
+        try{
+          const response = await fetch('/api/shows')
+          const data = await response.json()
+          const firstTwo = [data[Math.floor(Math.random() * data.length + 1)], data[Math.floor(Math.random() * data.length + 1)]]
+          setShows(firstTwo)
+
+        } catch (err) {
+          console.log(err)
+        }
+
       }
-    ShowData();
+      getShows()
+      }, []);
+      
+
 
   return (
     <>
@@ -79,7 +84,7 @@ const HomePage = () => {
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={8}>
-            {shows.map((shows) => (
+            {!shows ? null : shows.map((shows) => (
               <Grid item key={shows.name} xs={12} sm={12} md={12}>
                 <Typography variant="h5" align="center" color="text.secondary" paragraph>
                 Title
@@ -94,7 +99,7 @@ const HomePage = () => {
                       // 16:9
                       pt: '56.25%',
                     }}
-                    image="https://source.unsplash.com/random?wallpapers"
+                    image={shows.imageUrl}
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
