@@ -6,7 +6,7 @@ const Navbar = () => {
     <>
       <section>
         <Link className='Nav' to='/'>Home</Link>
-        <Link className='Nav' to='/test'>Show List</Link>
+        <Link className='Nav' to='/ShowsPage'>Show List</Link>
         <Link className='Nav' to='/logintest'>Log In</Link>
         <Link className='Nav' to='/Admin'>Admin</Link>
         <Link className='Nav' to='/Profile'>Profile</Link>
