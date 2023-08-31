@@ -35,7 +35,7 @@ router.post("/login", async (req, res) => {
   try {
     // Find the user in the database
     const user = await prisma.user.findUnique({
-      where: {username: username},
+      where: {username},
     });
 
     if (!user) {
