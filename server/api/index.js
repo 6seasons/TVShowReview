@@ -9,6 +9,7 @@ router.get("/", (req, res) => {
   res.send("hello from api");
 });
 
+
 router.use("/shows", shows);
 router.use("/users", users);
 router.use("/reviews", reviews);
