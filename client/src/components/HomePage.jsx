@@ -38,7 +38,7 @@ const HomePage = () => {
         try{
           const response = await fetch('/api/shows')
           const data = await response.json()
-          const firstTwo = [data[Math.floor(Math.random() * data.length + 1)], data[Math.floor(Math.random() * data.length + 1)]]
+          const firstTwo = [data[Math.floor(Math.random() * data.length)], data[Math.floor(Math.random() * data.length)]]
           setShows(firstTwo)
 
         } catch (err) {
@@ -84,39 +84,42 @@ const HomePage = () => {
         <Container sx={{ py: 8 }} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={8}>
-            {!shows ? null : shows.map((shows) => (
-              <Grid item key={shows.name} xs={12} sm={12} md={12}>
-                <Typography variant="h5" align="center" color="text.secondary" paragraph>
-                Title
-                </Typography>
-                <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column', align: 'center'}}
-                >
-                   <Link color="inherit" to={`/showdetails/${shows.id}`}>
-                  <CardMedia
-                    component="div"
-                    sx={{
-                      // 16:9
-                      pt: '56.25%',
-                    }}
-                    image={shows.imageUrl}
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {shows.name}
-                    </Typography>
-                    <Typography>
-                    {shows.details}
-                    </Typography>
-                  </CardContent>
-                  </Link>{' '}
-                  <CardActions>
-                    <Button size="small">Review</Button>
-                    <Button size="small">Admin Edit</Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
+            {!shows ? null : shows.map((show) => {
+              const showRoute = `/showdetails/${show.id}`;
+              return (
+                <Grid item key={show.name} xs={12} sm={12} md={12}>
+                  <Typography variant="h5" align="center" color="text.secondary" paragraph>
+                  Title
+                  </Typography>
+                  <Card
+                    sx={{ height: '100%', display: 'flex', flexDirection: 'column', align: 'center'}}
+                  >
+                    <Link color="inherit" to={showRoute}>
+                    <CardMedia
+                      component="div"
+                      sx={{
+                        // 16:9
+                        pt: '56.25%',
+                      }}
+                      image={show.imageUrl}
+                    />
+                    <CardContent sx={{ flexGrow: 1 }}>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {show.name}
+                      </Typography>
+                      <Typography>
+                      {show.details}
+                      </Typography>
+                    </CardContent>
+                    </Link>{' '}
+                    <CardActions>
+                      <Button size="small">Review</Button>
+                      <Button size="small">Admin Edit</Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              )
+            })}
           </Grid>
         </Container>
       </main>
