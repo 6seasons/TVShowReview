@@ -47,7 +47,19 @@ router.post(`/create`, async (req, res) => {
   res.json(result)
 })
 
-module.exports = router;
+router.put(`/EditShowPage/Edit/:id`, async (req, res) => {
+  const { name, imageUrl, details } = req.body
+  const result = await prisma.show.update({
+    where: {id: Number(req.params.id)},
+    data: {
+      name,
+      imageUrl,
+      details,
+    },
+  })
+  res.json(result)
+})
+
 
 router.delete('/delete', async (req, res) => {
   const {id} = req.body
@@ -56,3 +68,5 @@ router.delete('/delete', async (req, res) => {
   })
   res.json(result)
 })
+
+module.exports = router;
