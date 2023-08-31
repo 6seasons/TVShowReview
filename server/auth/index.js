@@ -35,7 +35,7 @@ router.post("/login", async (req, res) => {
   try {
     // Find the user in the database
     const user = await prisma.user.findUnique({
-      where: { username },
+      where: {username: username},
     });
 
     if (!user) {
@@ -50,7 +50,7 @@ router.post("/login", async (req, res) => {
     }
 
     // Generate a JWT token
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ id: user.id }, process.env.JWT, { expiresIn: '1h' });
 
     res.send({ token });
   } catch (error) {

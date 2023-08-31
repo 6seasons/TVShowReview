@@ -8,6 +8,8 @@ import ProfilePage from "./components/ProfilePage";
 import Searchbar from "./components/Searchbar";
 import ReviewPage from "./components/ReviewPage";
 import EditShowPage from "./components/EditShowPage";
+import Register from "./components/Register"
+import Login from "./components/Login"
 
 
 const App = () => {
@@ -24,8 +26,8 @@ const App = () => {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/Profile" element={<ProfilePage />}></Route>
         <Route path="/Review/:reviewID" element={<ReviewPage />}></Route>
-        <Route path="/register" element={<Register />}></Route>
-        <Route path="/login" element={<Login />}></Route>
+        <Route path="/Register" element={<Register />}></Route>
+        <Route path="/Login" element={<Login />}></Route>
       </Routes>
     </>
   );

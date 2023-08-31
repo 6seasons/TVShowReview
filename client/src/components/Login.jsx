@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -18,15 +18,17 @@ const Login = () => {
         event.preventDefault();
         setLoading(true);
         setError(null);
+        console.log(username, password);
         try {
-            const response = await fetch('http://localhost:3000/api/auth/login', {
+            const response = await fetch('/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ username: username, password: password })
             });
             const data = await response.json();
+            console.log(data);
             if (!response.ok) {
                 throw new Error(data.message || 'Something went wrong');
             }
@@ -47,8 +49,9 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>
-                        Email:
-                        <input type="email" value={email} onChange={handleEmailChange} required />
+                        
+                        Username:
+                        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
                     </label>
                 </div>
                 <div>
