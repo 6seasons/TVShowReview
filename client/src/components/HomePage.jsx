@@ -114,7 +114,6 @@ const HomePage = () => {
                     </Link>{' '}
                     <CardActions>
                       <Button size="small">Review</Button>
-                      <Button size="small">Admin Edit</Button>
                     </CardActions>
                   </Card>
                 </Grid>
