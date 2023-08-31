@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const Login = () => {
     const [username, setUsername] = useState("");
@@ -32,7 +32,7 @@ const Login = () => {
             if (!response.ok) {
                 throw new Error(data.message || 'Something went wrong');
             }
-            alert('Login successful');
+            
             // Store the token, redirect the user, etc.
             // ...
         } catch (err) {
