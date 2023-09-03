@@ -2,6 +2,11 @@ import { Link } from 'react-router-dom'
 import '../App.css'
 
 const Navbar = ({ token, isAdmin }) => {
+
+  const signOutHandler = () => {
+    console.log(`hey minami`);
+  }
+
   return (
     <>
       <section>
@@ -11,7 +16,7 @@ const Navbar = ({ token, isAdmin }) => {
         {!token ? null : <Link className='Nav' to='/Profile'>Profile</Link>}
         {!isAdmin ? null :  <Link className='Nav' to='/Admin'>Admin</Link>}
         {!token ? null : 
-          <button>Sign Out</button>
+          <button onClick={signOutHandler}>Sign Out</button>
         }
       </section>
     </>

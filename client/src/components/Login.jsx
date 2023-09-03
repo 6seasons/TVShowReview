@@ -21,7 +21,6 @@ const Login = ({ setToken, setUserID, setIsAdmin }) => {
     event.preventDefault();
     setLoading(true);
     setError(null);
-    console.log(username, password);
     try {
       const response = await fetch("/auth/login", {
         method: "POST",

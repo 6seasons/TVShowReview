@@ -17,10 +17,6 @@ const App = () => {
   const [userID, setUserID] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
 
-  useEffect(() => {
-    console.log(token);
-  }, [token]);
-
   return (
     <>
       <Navbar token={token} isAdmin={isAdmin} />
