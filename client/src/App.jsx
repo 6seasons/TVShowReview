@@ -3,13 +3,13 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import Navbar from "./components/Navbar";
-import ShowDetails from "./components/ShowDetails";
+import ShowDetails from "./components/Shows/ShowDetails";
 import Admin from "./components/Admin/AdminPage";
 import ProfilePage from "./components/ProfilePage";
 import Searchbar from "./components/Searchbar";
-import ReviewPage from "./components/ReviewPage";
+import ReviewPage from "./components/Reviews/ReviewPage";
 import EditShowPage from "./components/Admin/EditShowPage";
-import ShowsPage from "./components/ShowsPage";
+import ShowsPage from "./components/Shows/ShowsPage";
 import Login from "./components/Login";
 
 const App = () => {
