@@ -6,6 +6,7 @@ const ShowDetails = () => {
 
   const [show, setShow] = useState(null);
   const [reviews, setReviews] = useState([]);
+  const [avg, setAvg] = useState(null);
 
   useEffect(() => {
     const fetchShow = async () => {
@@ -14,6 +15,7 @@ const ShowDetails = () => {
         const data = await response.json();
         setShow(data.show);
         setReviews(data.reviews);
+        setAvg(data.aggregations);
       } catch (err) {
         console.log(err);
       }
@@ -23,15 +25,15 @@ const ShowDetails = () => {
 
   return (
     <>
-      {show ?
-      <section>
-        <h1>{show.name}</h1>
-        <img src={show.imageUrl} />
-        <p>{show.details}</p>
-      </section> :
-      null
-      }
-      {reviews.map(review => {
+      {show ? (
+        <section>
+          <h1>{show.name}</h1>
+          <img src={show.imageUrl} />
+          <p>{show.details}</p>
+          <h3>{avg._avg.rating.toFixed(1)}</h3>
+        </section>
+      ) : null}
+      {reviews.map((review) => {
         const reviewURL = `/Review/${review.id}`;
         return (
           <>
