@@ -4,11 +4,11 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import Navbar from "./components/Navbar";
 import ShowDetails from "./components/ShowDetails";
-import Admin from "./components/AdminPage";
+import Admin from "./components/Admin/AdminPage";
 import ProfilePage from "./components/ProfilePage";
 import Searchbar from "./components/Searchbar";
 import ReviewPage from "./components/ReviewPage";
-import EditShowPage from "./components/EditShowPage";
+import EditShowPage from "./components/Admin/EditShowPage";
 import ShowsPage from "./components/ShowsPage";
 import Login from "./components/Login";
 
