@@ -1,10 +1,16 @@
-import { Link } from 'react-router-dom'
-import '../App.css'
+import { Link, useNavigate } from 'react-router-dom';
+import '../App.css';
 
-const Navbar = ({ token, isAdmin }) => {
+const Navbar = ({ token, setToken, setUserID, isAdmin, setIsAdmin }) => {
+
+  const navigate = useNavigate();
 
   const signOutHandler = () => {
-    console.log(`hey minami`);
+
+    setToken(null);
+    setUserID(null);
+    setIsAdmin(false);
+    navigate('/');
   }
 
   return (

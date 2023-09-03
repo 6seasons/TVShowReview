@@ -19,7 +19,13 @@ const App = () => {
 
   return (
     <>
-      <Navbar token={token} isAdmin={isAdmin} />
+      <Navbar 
+        token={token} 
+        setToken={setToken}
+        isAdmin={isAdmin} 
+        setIsAdmin={setIsAdmin}
+        setUserID={setUserID}
+      />
       <Searchbar />
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
