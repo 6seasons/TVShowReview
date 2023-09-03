@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import '../App.css'
 
-const Navbar = ({ token }) => {
+const Navbar = ({ token, isAdmin }) => {
   return (
     <>
       <section>
@@ -9,7 +9,10 @@ const Navbar = ({ token }) => {
         <Link className='Nav' to='/ShowsPage'>Show List</Link>
         {token ? null : <Link className='Nav' to='/Login'>Log In</Link>}
         {!token ? null : <Link className='Nav' to='/Profile'>Profile</Link>}
-        <Link className='Nav' to='/Admin'>Admin</Link>
+        {!isAdmin ? null :  <Link className='Nav' to='/Admin'>Admin</Link>}
+        {!token ? null : 
+          <button>Sign Out</button>
+        }
       </section>
     </>
   )

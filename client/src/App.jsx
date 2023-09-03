@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import Navbar from "./components/Navbar";
@@ -12,19 +12,18 @@ import EditShowPage from "./components/EditShowPage";
 import ShowsPage from "./components/ShowsPage";
 import Login from "./components/Login";
 
-
 const App = () => {
-
   const [token, setToken] = useState(null);
   const [userID, setUserID] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    console.log(token)
-  },[token])
+    console.log(token);
+  }, [token]);
 
   return (
     <>
-      <Navbar token={token} />
+      <Navbar token={token} isAdmin={isAdmin} />
       <Searchbar />
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
@@ -35,7 +34,16 @@ const App = () => {
         <Route path="/Profile" element={<ProfilePage token={token} />}></Route>
         <Route path="/Review/:reviewID" element={<ReviewPage />}></Route>
         {/* <Route path="/Register" element={<Register />}></Route> */}
-        <Route path="/Login" element={<Login setToken={setToken} setUserID={setUserID} />}></Route>
+        <Route
+          path="/Login"
+          element={
+            <Login
+              setToken={setToken}
+              setUserID={setUserID}
+              setIsAdmin={setIsAdmin}
+            />
+          }
+        ></Route>
       </Routes>
     </>
   );
