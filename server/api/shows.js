@@ -28,8 +28,15 @@ router.get("/:id", async (req, res) => {
         }
       }
     }
+    });
+    const aggregations = await prisma.review.aggregate({
+      _avg: {
+        rating: true,
+      },
+      where: { show_id: Number(req.params.id) },
+      
     })
-    res.send({ show: show, reviews: reviews });
+    res.send({ show: show, reviews: reviews, aggregations: aggregations });
   } catch (err) {
     console.log(err);
   }
