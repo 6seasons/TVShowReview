@@ -24,7 +24,7 @@ const App = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar token={token} />
       <Searchbar />
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
