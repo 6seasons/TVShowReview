@@ -39,8 +39,10 @@ router.get("/:id", async (req, res) => {
   }
   });
   res.send(review);
-})
+});
 
-// user pic/ show pic / rating / review / comments
+router.post('/create', (req, res) => {
+  console.log(req.body);
+})
 
 module.exports = router;

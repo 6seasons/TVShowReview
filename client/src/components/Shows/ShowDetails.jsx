@@ -8,6 +8,7 @@ const ShowDetails = () => {
   const [reviews, setReviews] = useState([]);
   const [avg, setAvg] = useState(null);
 
+  
   useEffect(() => {
     const fetchShow = async () => {
       try {
@@ -22,11 +23,14 @@ const ShowDetails = () => {
     };
     fetchShow();
   }, [showID]);
+  
+  const createReviewUrl = `/showdetails/${showID}/CreateReview`
 
   return (
     <>
       {show ? (
         <section>
+          <Link to={createReviewUrl}>Create Review</Link>
           <h1>{show.name}</h1>
           <img src={show.imageUrl} />
           <p>{show.details}</p>

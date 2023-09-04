@@ -11,6 +11,7 @@ import ReviewPage from "./components/Reviews/ReviewPage";
 import EditShowPage from "./components/Admin/EditShowPage";
 import ShowsPage from "./components/Shows/ShowsPage";
 import Login from "./components/Login";
+import CreateReview from "./components/Reviews/CreateReview"
 
 const App = () => {
   const [token, setToken] = useState(null);
@@ -30,6 +31,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/showdetails/:showID" element={<ShowDetails />}></Route>
+        <Route path="/showdetails/:showID/CreateReview" element={<CreateReview />}></Route>
         <Route path="/Admin" element={<Admin />}></Route>
         <Route path="/ShowsPage" element={<ShowsPage />}></Route>
         <Route path="/EditShowPage/:showID" element={<EditShowPage />}></Route>
