@@ -8,8 +8,11 @@ const CreateReview = () => {
   const [content, setContent] = useState("");
   const [rating, setRating] = useState("");
 
-  const createReviewHandler = (e) => {
+  const createReviewHandler = async (e) => {
     e.preventDefault();
+    const response = await fetch('/api/reviews/create', {
+      
+    })
     console.log(rating, content);
   };
 
