@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
-const ShowDetails = () => {
+const ShowDetails = ({ token }) => {
   const { showID } = useParams();
 
   const [show, setShow] = useState(null);
@@ -30,7 +30,7 @@ const ShowDetails = () => {
     <>
       {show ? (
         <section>
-          <Link to={createReviewUrl}>Create Review</Link>
+          {!token? null : <Link to={createReviewUrl}>Create Review</Link>}
           <h1>{show.name}</h1>
           <img src={show.imageUrl} />
           <p>{show.details}</p>

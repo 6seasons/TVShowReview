@@ -30,7 +30,7 @@ const App = () => {
       <Searchbar />
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
-        <Route path="/showdetails/:showID" element={<ShowDetails />}></Route>
+        <Route path="/showdetails/:showID" element={<ShowDetails token={token} />}></Route>
         <Route 
           path="/showdetails/:showID/CreateReview" 
           element={
