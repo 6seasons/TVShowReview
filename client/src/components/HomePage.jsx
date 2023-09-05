@@ -73,7 +73,7 @@ const HomePage = () => {
               color="text.primary"
               gutterBottom
             >
-              TV SHOW REVIEW
+              6 Seasons
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
               WELCOME TO 6 SEASON REVIEWS
@@ -89,7 +89,6 @@ const HomePage = () => {
               return (
                 <Grid item key={show.name} xs={12} sm={12} md={12}>
                   <Typography variant="h5" align="center" color="text.secondary" paragraph>
-                  Title
                   </Typography>
                   <Card
                     sx={{ height: '100%', display: 'flex', flexDirection: 'column', align: 'center'}}
