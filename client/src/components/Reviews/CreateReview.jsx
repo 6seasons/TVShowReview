@@ -27,6 +27,7 @@ const CreateReview = ({ userID }) => {
         "Content-Type": "application/json",
       },
     })
+    navigate(`/showdetails/${showID}`)
   };
 
   return (

@@ -41,8 +41,27 @@ router.get("/:id", async (req, res) => {
   res.send(review);
 });
 
-router.post('/create', (req, res) => {
-  console.log(req.body);
+router.post('/create', async (req, res) => {
+  const { user_id, show_id, rating, content } = req.body;
+  const exists = await prisma.review.findFirst({
+    where: {
+      user_id,
+      show_id: Number(show_id),
+    }
+  });
+  if (!exists) {
+    const review = await prisma.review.create({
+      data : {
+        user_id,
+        show_id: Number(show_id),
+        rating: Number(rating),
+        content
+      }
+    })
+    res.send(review);
+  } else {
+    res.send(exists);
+  }
 })
 
 module.exports = router;
