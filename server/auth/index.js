@@ -53,7 +53,7 @@ router.post("/login", async (req, res) => {
 
     // If valid, generate a JWT
     const token = jwt.sign({ id: user.id }, process.env.JWT);
-    res.send({token: token});
+    res.send({id: user.id, token: token, isAdmin: user.isAdmin});
 
   } catch (error) {
     res.status(500).json({ error: 'Something went wrong. Please try again.' });

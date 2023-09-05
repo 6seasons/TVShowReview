@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
-const ShowDetails = () => {
+const ShowDetails = ({ token }) => {
   const { showID } = useParams();
 
   const [show, setShow] = useState(null);
   const [reviews, setReviews] = useState([]);
   const [avg, setAvg] = useState(null);
 
+  
   useEffect(() => {
     const fetchShow = async () => {
       try {
@@ -22,11 +23,14 @@ const ShowDetails = () => {
     };
     fetchShow();
   }, [showID]);
+  
+  const createReviewUrl = `/showdetails/${showID}/CreateReview`
 
   return (
     <>
       {show ? (
         <section>
+          {!token? null : <Link to={createReviewUrl}>Create Review</Link>}
           <h1>{show.name}</h1>
           <img src={show.imageUrl} />
           <p>{show.details}</p>
